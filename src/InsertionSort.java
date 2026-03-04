@@ -6,12 +6,12 @@ public class InsertionSort {
         System.out.println(Arrays.toString(arr));
         for (int i = 1; i < arr.length; i++){
             int n = i;
+            int temp = arr[n];
             while(n>0 && arr[n] < arr[n-1] ){
-                int temp = arr[n];
                 arr[n] = arr[n-1];
-                arr[n-1] = temp;
                 n--;
             }
+            arr[n] = temp;
         }
         System.out.println(Arrays.toString(arr));
     }
