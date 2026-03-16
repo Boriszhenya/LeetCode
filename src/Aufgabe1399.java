@@ -1,9 +1,6 @@
-import java.util.Arrays;
-
 public class Aufgabe1399 {
     public static void main(String[] args) {
         int num1 = 24;
-
         System.out.println(countLargestGroup(num1));
     }
 
@@ -15,15 +12,15 @@ public class Aufgabe1399 {
             resultSum[sum]++;
         }
         int maximum = 0;
-        for (int i = 0; i < resultSum.length; i++) {
-            if (resultSum[i] > maximum) {
-                maximum = resultSum[i];
+        for (int j : resultSum) {
+            if (j > maximum) {
+                maximum = j;
             }
         }
 
         int count = 0;
-        for (int i = 0; i < resultSum.length; i++) {
-            if (resultSum[i] == maximum) {
+        for (int j : resultSum) {
+            if (j == maximum) {
                 count++;
             }
         }
@@ -32,7 +29,6 @@ public class Aufgabe1399 {
 
     public static int sumAllDigitsInNumber(int nunber) {
         int sum = 0;
-
         while (nunber > 0) {
             sum += nunber % 10;
             nunber /= 10;
