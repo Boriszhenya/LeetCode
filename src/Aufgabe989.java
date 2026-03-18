@@ -1,39 +1,51 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Aufgabe989 {
     public static void main(String[] args) {
-        int[] num = {2,1,5};
-        int k = 806;
-        System.out.println(addToArrayForm(num, k));
+        int[] num = {1,2};
+        int k = 4567;
+        System.out.println(addToArrayForm1(num, k));
+
 
     }
 
-    public static List<Integer> addToArrayForm(int[] num, int k) {
-        List<Integer> list = new ArrayList<>();
-        int[] newArr = new int[num.length];
-        int i = newArr.length - 1;
+    public static List<Integer> addToArrayForm1(int[] num, int k) {
+        List<Integer> resultList = new ArrayList<>();
+        List<Integer> listNum = new ArrayList<>();
+        List<Integer> listNumK = new ArrayList<>();
+
         while (k > 0) {
-            newArr[i] = k % 10;
+            listNumK.addFirst(k % 10);
             k = k / 10;
-            i--;
         }
+
+        for (int number : num) {
+            listNum.add(number);
+        }
+
+        while (listNumK.size() != listNum.size()) {
+            if (listNumK.size() > listNum.size()) {
+                listNum.addFirst(0);
+            } else {
+                listNumK.addFirst(0);
+            }
+        }
+
         int over = 0;
-        for (int j = num.length - 1; j >= 0; j--) {
-            int rez = num[j] + newArr[j] + over;
+        for (int j = listNum.size() - 1; j >= 0; j--) {
+            int rez = listNum.get(j) + listNumK.get(j) + over;
             if (rez > 9) {
-                list.addFirst(rez % 10);
+                resultList.addFirst(rez % 10);
                 over = 1;
-            } else  {
-                list.addFirst(rez);
+            } else {
+                resultList.addFirst(rez);
                 over = 0;
             }
         }
         if (over == 1) {
-            list.addFirst(over);
+            resultList.addFirst(over);
         }
-        return list;
+        return resultList;
     }
-
 }
